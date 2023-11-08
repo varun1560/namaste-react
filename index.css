@@ -1,3 +1,102 @@
-#heading {
-  color: red;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: lightgrey;
+  color: black;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  width: 70px;
+  padding: 0px 20px;
+  mix-blend-mode: color-burn;
+}
+
+.wrap-text {
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  overflow: hidden; /* Hides overflowing content */
+  text-overflow: ellipsis; /* Displays ellipsis (...) when content overflows */
+  width: 100%; /* Optional: Set a specific width for the element */
+}
+
+.search {
+  padding: 10px;
+}
+
+.res-card {
+  margin: 5px;
+  background-color: #f0f0f0;
+  padding: 4px;
+  width: 190px;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.res-card:hover {
+  cursor: pointer;
+  border: 1px solid gray;
+  box-shadow: 6px 6px 3px grey;
+}
+
+.res-logo {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter {
+  width: 100%;
+  text-align: end;
+}
+
+.filter-btn {
+  cursor: pointer;
+  color: white;
+  background-color: orange;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  margin: 10px 25px;
+}
+
+/* ========================================================================================================= */
+
+h3 {
+  margin: 0px;
+}
+
+h4 {
+  margin: 8px 0px;
+  font-weight: 300;
+}
+
+.nav-items > ul {
+  display: flex;
+  padding: 0px 20px;
+  list-style-type: none;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+  font-size: 1.1em;
+}
+
+.nav-items > ul > li:hover {
+  color: orange;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 8px;
 }
