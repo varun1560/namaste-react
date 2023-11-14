@@ -53,3 +53,8 @@
 - Two very important hooks
   => useState() - Superpowerful state variable in react
   => useEffect()
+
+# 2 type Routing in web apps
+
+- Client Side Routing
+- Server Side Routing
