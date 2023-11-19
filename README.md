@@ -51,8 +51,10 @@
 
 - Normal JS utility functions
 - Two very important hooks
-  => useState() - Superpowerful state variable in react
+  => useState() - Superpowerful state variable in react.
   => useEffect()
+  => useRouteError() - react-router provide us this hook with object representation for error in navigation.
+  => useParams() - react-router-dom provide us this hook & can be used to access the parameters from the current route.
 
 # 2 type Routing in web apps
 

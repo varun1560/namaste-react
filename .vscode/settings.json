@@ -1,0 +1,6 @@
+{
+  "html.format.maxPreserveNewLines": 200,
+  "html.format.wrapLineLength": 200,
+  "typescript.format.enable": true,
+  "typescript.format.indentSwitchCase": true
+}

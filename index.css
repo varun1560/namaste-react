@@ -98,6 +98,14 @@
   cursor: pointer;
 }
 
+.user-card {
+  margin: 5px;
+  width: 35%;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
 /* ========================================================================================================= */
 
 h3 {
@@ -116,24 +124,22 @@ h4 {
   list-style-type: none;
 }
 
-.nav-items > ul > li {
+.nav-items > ul > li > a {
   padding: 6px 10px;
   margin: 10px;
   font-size: 1.1em;
-}
-
-.nav-items > ul > li:hover {
-  color: orange;
-  cursor: pointer;
-  background-color: white;
-  border-radius: 8px;
-}
-
-.nav-items > ul > li > a {
   text-decoration: none;
   color: white;
+  /* background-color: white; */
 }
 
 .nav-items > ul > li > a:hover {
   color: orange;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.res-container > a {
+  text-decoration: none;
+  color: black;
 }
