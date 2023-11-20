@@ -2,39 +2,52 @@ import React from "react";
 
 class UserClass extends React.Component {
   constructor(props) {
+    console.log("constructor is called");
     super(props);
     this.state = {
-      count: 0,
+      userInfo: {
+        name: "Dummy",
+        location: "Default",
+        avatar_url:
+          "https://sipl.ind.in/wp-content/uploads/2022/07/dummy-user.png",
+      },
     };
-    console.log("Child Constructor");
   }
 
-  componentDidMount() {
-    console.log("Child componentDidMount");
-    //We used this method for API call and after api call it will rerender component after api call with updated data
-  }
+  async componentDidMount() {
+    console.log("componentDidMount called");
+    const data = await fetch("https://api.github.com/users/varun1560");
+    const json = await data.json();
+    console.log(json);
 
-  countIncrease = () => {
-    // Never UPDATE state variables directly in class component
-    // eg.
-    // this.state.count = this.state.count + 1;
-
-    // How to do
     this.setState({
-      count: this.state.count + 1,
+      userInfo: {
+        name: json.name,
+        location: json.location ? json.location : "Not Mentioned",
+        avatar_url: json.avatar_url,
+      },
     });
-  };
+  }
+
+  componentDidUpdate() {
+    console.log("componentDidUpdate called");
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount called");
+  }
 
   render() {
-    console.log("Child Render");
-    const { name, location } = this.props;
+    console.log("render is called");
+    const { name, location, avatar_url } = this.state.userInfo;
     return (
-      <div className="user-card">
-        <h3>Count:{this.state.count}</h3>
-        <button onClick={this.countIncrease}>Count Increase</button>
-        <h3>Name: {name}</h3>
-        <h4>Location: {location}</h4>
-        <h4>Contact: varunbhujbal@gmail.com</h4>
+      <div className="user-card display-user-info">
+        <img className="img-user-profile" src={avatar_url} alt="user-profile" />
+        <div className="div-user-name">
+          <h3>Name: {name}</h3>
+          <h4>Location: {location}</h4>
+          <h4>Contact: varunbhujbal@gmail.com</h4>
+        </div>
       </div>
     );
   }

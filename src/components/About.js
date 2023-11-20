@@ -4,15 +4,11 @@ import { Component } from "react";
 class About extends Component {
   constructor(props) {
     super(props);
-    console.log("Parent Constructor");
   }
 
-  componentDidMount() {
-    console.log("Parent componentDidMount");
-  }
+  componentDidMount() {}
 
   render() {
-    console.log("Parent Render");
     return (
       <div>
         <h1>About Page</h1>
@@ -20,10 +16,6 @@ class About extends Component {
         <UserClass
           name={"Varun Bhujbal (Class)"}
           location={"Airoli Navi Mumbai (Class)"}
-        />
-        <UserClass
-          name={"Akshay Saini (Class)"}
-          location={"Deharadun (Class)"}
         />
       </div>
     );

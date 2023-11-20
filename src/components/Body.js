@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import { RESTAURANTS_API } from "../utils/constants";
 
 const Body = () => {
   const [originalList, setOriginalList] = useState([]);
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -14,18 +17,20 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const response = await fetch(RESTAURANTS_API);
 
-      const json = await data.json();
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const json = await response.json();
       const restDataFromApi =
         json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
       setOriginalList(restDataFromApi);
       setListOfRestaurant(restDataFromApi);
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -40,6 +45,14 @@ const Body = () => {
     const filteredList = originalList?.filter((res) => res.info.avgRating > 4);
     setListOfRestaurant(filteredList);
   };
+
+  if (onlineStatus === false) {
+    return (
+      <h1>
+        Looks like you are offline! Please check your internet connection.
+      </h1>
+    );
+  }
 
   return listOfRestaurant?.length === 0 ? (
     <Shimmer />

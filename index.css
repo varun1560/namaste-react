@@ -100,10 +100,27 @@
 
 .user-card {
   margin: 5px;
-  width: 35%;
+  width: 30%;
   padding: 10px;
   border: 1px solid gray;
   border-radius: 10px;
+}
+
+.display-user-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.img-user-profile {
+  height: 120px;
+  width: 120px;
+  border: none;
+  border-radius: 50%;
+}
+
+.div-user-name {
+  padding: 10px;
 }
 
 /* ========================================================================================================= */
