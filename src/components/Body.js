@@ -58,23 +58,31 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="flex justify-between ml-[65px] mr-[65px]">
+        <div className="m-4">
           <input
             type="text"
-            className="search-input"
+            className="border border-solid px-4 py-1 rounded-md"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="search-btn" onClick={handleSearchClick}>
+          <button
+            className="px-4 py-1 mx-4 bg-orange-400 text-white rounded-lg"
+            onClick={handleSearchClick}
+          >
             Search
           </button>
         </div>
-        <button className="filter-btn" onClick={handleFilterClick}>
-          Top Rated Restaurant
-        </button>
+        <div className="m-4">
+          <button
+            className="px-4 py-1 bg-orange-400 text-white rounded-lg"
+            onClick={handleFilterClick}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap items-center justify-center">
         {listOfRestaurant?.map(({ info }) => (
           <Link key={info.id} to={"/restaurants/" + info.id}>
             <RestaurantCard resData={info} />
