@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { RESTAURANTS_API } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [originalList, setOriginalList] = useState([]);
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
-
-  console.log(listOfRestaurant);
-
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -50,6 +49,10 @@ const Body = () => {
     setListOfRestaurant(filteredList);
   };
 
+  const changeUserName = (e) => {
+    setUserName(e.target.value);
+  };
+
   if (onlineStatus === false) {
     return (
       <h1>
@@ -77,6 +80,17 @@ const Body = () => {
             Search
           </button>
         </div>
+
+        <div className="m-4">
+          <label htmlFor="UserName">UserName: </label>
+          <input
+            type="text"
+            className="border border-solid px-4 py-1 rounded-md mx-4"
+            value={loggedInUser} // Make sure this is correctly bound
+            onChange={changeUserName} // Ensure you are updating the state
+          />
+        </div>
+
         <div className="m-4">
           <button
             className="px-4 py-1 bg-orange-400 text-white rounded-lg"

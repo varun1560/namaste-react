@@ -55,6 +55,9 @@
   => useEffect()
   => useRouteError() - react-router provide us this hook with object representation for error in navigation.
   => useParams() - react-router-dom provide us this hook & can be used to access the parameters from the current route.
+  => useContext() - After creating context in react you can use it with the help of useContext() hook.
+  => useDispatch() - Its used for dispatching the values from redux store
+  => useSelector() - Its used for reading the values from redux store.
 
 # 2 type Routing in web apps
 
@@ -70,3 +73,12 @@
 - Chakra
 - Ant Design
 - Tailwind
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit And react-redux
+- Build our store
+- Connect our store to our app
+- Create slice (cartSlice)
+- Dispatch(action)
+- Selector

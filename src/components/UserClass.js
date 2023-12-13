@@ -2,7 +2,7 @@ import React from "react";
 
 class UserClass extends React.Component {
   constructor(props) {
-    console.log("constructor is called");
+    // console.log("constructor is called");
     super(props);
     this.state = {
       userInfo: {
@@ -15,10 +15,9 @@ class UserClass extends React.Component {
   }
 
   async componentDidMount() {
-    console.log("componentDidMount called");
+    // console.log("componentDidMount called");
     const data = await fetch("https://api.github.com/users/varun1560");
     const json = await data.json();
-    console.log(json);
 
     this.setState({
       userInfo: {
@@ -30,15 +29,15 @@ class UserClass extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("componentDidUpdate called");
+    // console.log("componentDidUpdate called");
   }
 
   componentWillUnmount() {
-    console.log("componentWillUnmount called");
+    // console.log("componentWillUnmount called");
   }
 
   render() {
-    console.log("render is called");
+    // console.log("render is called");
     const { name, location, avatar_url } = this.state.userInfo;
     return (
       <div className="user-card display-user-info">
